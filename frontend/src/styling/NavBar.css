@@ -3,7 +3,6 @@
   height: 75px;
   width: 100%;
   background-color: #1C33BC;
-  text-align: center;
 } 
 
 a:link {
@@ -25,7 +24,7 @@ a:active {
 
 .nav-links {
   padding: 2%;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .left {
