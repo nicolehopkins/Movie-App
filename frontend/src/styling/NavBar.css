@@ -1,5 +1,33 @@
 .navbar {
+  font-family: Arial, Helvetica, sans-serif;
   height: 75px;
   width: 100%;
-  background-color: #030E48;
+  background-color: #1C33BC;
+  text-align: center;
+} 
+
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+}
+
+a:hover {
+  color: red;
+}
+
+a:active {
+  color: red;
+}
+
+.nav-links {
+  padding: 2%;
+  font-size: 25px;
+}
+
+.left {
+  text-justify: left;
 }
