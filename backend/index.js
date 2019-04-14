@@ -3,7 +3,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const {movieRouter} = require('./routes/movies')
+const {movieRouter} = require('./routes/movies');
+const {genreRouter} = require('./routes/genres')
 
 // MIDDLEWARE
 app.use(bodyParser.urlencoded({extended: false}));
@@ -12,6 +13,7 @@ app.use(bodyParser.json())
 
 // ROUTERS
 app.use('/movies', movieRouter);
+app.use('/genres', genreRouter)
 
 
 
