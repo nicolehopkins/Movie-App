@@ -7,7 +7,7 @@ movieService.create = (title, genre_id, img_url) => {
   INSERT INTO movies(title, genre_id, img_url)
   VALUES ($[title], $[genre_id], $[img_url])
   RETURNING id`;
-  return db.none(sql, {title, genre_id, img_url})
+  return db.one(sql, {title, genre_id, img_url})
 }
 
 movieService.read = (id) => {

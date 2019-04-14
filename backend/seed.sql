@@ -4,14 +4,14 @@ CREATE DATABASE movieapp;
 \c movieapp;
 
 CREATE TABLE movies (
-id SERIAL PRIMARY KEY ,
+id SERIAL PRIMARY KEY NOT NULL,
 title VARCHAR NOT NULL,
-genre_id INTEGER UNIQUE ,
+genre_id INTEGER NOT NULL ,
 img_url VARCHAR NOT NULL
 );
 
 CREATE TABLE genres (
-  id INTEGER REFERENCES movies(genre_id),
+  id SERIAL PRIMARY KEY NOT NULL,
   genre VARCHAR NOT NULL
 );
 
