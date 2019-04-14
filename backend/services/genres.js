@@ -30,15 +30,16 @@ genreService.readEverything = (id) => {
   SELECT genres.*
   FROM genres
   WHERE genres.id=$[id]`
+  return db.any(sql, {id})
 }
 
-genreService.update = (id, title, genre_id, img_url) => {
+genreService.update = (genre) => {
   const sql = `
   UPDATE genres
   SET 
   genre=$[genre]
   WHERE id =$[id]`
-  return db.none(sql, {id, title, genre_id, img_url})
+  return db.none(sql, {genre})
 }
 
 genreService.delete = (id) => {

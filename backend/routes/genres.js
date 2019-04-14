@@ -32,9 +32,9 @@ genreRouter.get('/:id', (req, res, next) => {
 // UPDATE
 genreRouter.put('/:id', (req, res, next) => {
   const {id} = req.params;
-  const {title, genre_id, img_url} = req.body;
+  const {genre} = req.body;
 
-  genreService.update(id, title, genre_id, img_url)  
+  genreService.update(id, genre)  
     .then(data => res.json(data))
     .catch(err => console.log(err))
 })

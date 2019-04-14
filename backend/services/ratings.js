@@ -2,12 +2,12 @@ const {db} = require('./dbConnect');
 const ratingService = {};
 
 
-ratingService.create = (rating) => {
+ratingService.create = (stars, movie_id) => {
   const sql = `
-  INSERT INTO ratings(rating)
-  VALUES ($[rating])
+  INSERT INTO ratings(stars)
+  VALUES ($[stars], $[movie_id])
   RETURNING id`;
-  return db.one(sql, {rating})
+  return db.one(sql, {stars, movie_id})
 }
 
 ratingService.read = (id) => {
@@ -30,15 +30,17 @@ ratingService.readEverything = (id) => {
   SELECT ratings.*
   FROM ratings
   WHERE ratings.id=$[id]`
+  return db.any(sql, {id})
 }
 
-ratingService.update = (id, title, rating_id, img_url) => {
+ratingService.update = (stars, movie_id) => {
   const sql = `
   UPDATE ratings
   SET 
-  rating=$[rating]
+  stars=$[stars],
+  movie_id=$[movie_id]
   WHERE id =$[id]`
-  return db.none(sql, {id, title, rating_id, img_url})
+  return db.none(sql, {stars, movie_id})
 }
 
 ratingService.delete = (id) => {

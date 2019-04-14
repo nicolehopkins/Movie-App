@@ -30,6 +30,7 @@ movieService.readEverything = (id) => {
   SELECT movies.*
   FROM movies
   WHERE movies.id=$[id]`
+  return db.any(sql, {id})
 }
 
 movieService.update = (id, title, genre_id, img_url) => {
