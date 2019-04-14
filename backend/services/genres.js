@@ -7,7 +7,7 @@ genreService.create = (genre) => {
   INSERT INTO genres(genre)
   VALUES ($[genre])
   RETURNING id`;
-  return db.none(sql, {genre})
+  return db.one(sql, {genre})
 }
 
 genreService.read = (id) => {
@@ -18,29 +18,34 @@ genreService.read = (id) => {
   return db.one(sql, {id})
 }
 
-genreService.readAll = (id) => {
+genreService.readAll = () => {
   const sql = `
   SELECT *
   FROM genres`
-  return db.any(sql, {id})
+  return db.any(sql)
+}
+
+genreService.readEverything = (id) => {
+  const sql = `
+  SELECT genres.*
+  FROM genres
+  WHERE genres.id=$[id]`
 }
 
 genreService.update = (id, title, genre_id, img_url) => {
   const sql = `
   UPDATE genres
   SET 
-  id=$[id],
-  title=$[title],
-  genre_id=$[genre_id],
-  img_url=$[img_url]
+  genre=$[genre]
   WHERE id =$[id]`
-  return db.none(sql, {title, genre_id, img_url})
+  return db.none(sql, {id, title, genre_id, img_url})
 }
 
 genreService.delete = (id) => {
   const sql = `
-  DELETE genres
-  WHERE id=$[id]`
+  DELETE *
+  FROM genres
+  WHERE genres.id=$[id]`
   return db.none(sql, {id})
 }
 
