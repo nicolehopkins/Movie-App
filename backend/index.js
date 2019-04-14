@@ -6,7 +6,8 @@ const cors = require('cors');
 const MovieServices = require('./services/movies');
 
 
-
+// ROUTERS
+app.use(MovieServices, '/movies');
 
 const port = 3005;
 app.listen(port, () => {

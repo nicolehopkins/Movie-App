@@ -18,11 +18,11 @@ movieService.read = (id) => {
   return db.one(sql, {id})
 }
 
-movieService.readAll = (id) => {
+movieService.readAll = () => {
   const sql = `
   SELECT *
   FROM movies`
-  return db.any(sql, {id})
+  return db.any(sql)
 }
 
 movieService.update = (id, title, genre_id, img_url) => {
@@ -34,7 +34,7 @@ movieService.update = (id, title, genre_id, img_url) => {
   genre_id=$[genre_id],
   img_url=$[img_url]
   WHERE id =$[id]`
-  return db.none(sql, {title, genre_id, img_url})
+  return db.none(sql, {id, title, genre_id, img_url})
 }
 
 movieService.delete = (id) => {
