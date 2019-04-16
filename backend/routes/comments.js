@@ -4,7 +4,7 @@ const commentService = require('../services/comments');
 
 
 // CREATE
-commentRouter.post('/', (req, res, next) => {
+commentRouter.post('/', (req, res) => {
   const {text, movie_id} = req.body;
 
   commentService.create(text, movie_id)
@@ -14,13 +14,13 @@ commentRouter.post('/', (req, res, next) => {
 
 
 // READ
-commentRouter.get('/', (req, res, next) => {
+commentRouter.get('/', (req, res) => {
   commentService.readAll()
   .then(data => res.json(data))
   .catch(err => console.log(err))
 })
 
-commentRouter.get('/:id', (req, res, next) => {
+commentRouter.get('/:id', (req, res) => {
   const {id} = req.params;
 
   commentService.read(id)
@@ -30,7 +30,7 @@ commentRouter.get('/:id', (req, res, next) => {
 
 
 // UPDATE
-commentRouter.put('/:id', (req, res, next) => {
+commentRouter.put('/:id', (req, res) => {
   const {id} = req.params;
   const {text, movie_id} = req.body;
 
@@ -41,7 +41,7 @@ commentRouter.put('/:id', (req, res, next) => {
 
 
 //DELETE
-commentRouter.delete('/:id', (req, res, next) => {
+commentRouter.delete('/:id', (req, res) => {
   const {id} = req.params;
 
   commentService.delete(id)

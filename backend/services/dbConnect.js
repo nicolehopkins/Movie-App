@@ -12,5 +12,5 @@ const getDbConn = (function () {
 })(); // IIFE
 
 module.exports = {
-  db,
+  getDbConn,
 }
